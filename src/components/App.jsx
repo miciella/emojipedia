@@ -2,18 +2,6 @@ import React from "react";
 import Entry from "./Entry.jsx";
 import emojipedia from "../emojipedia.js";
 
-
-function createDic(emoji){
-    return (
-        <Entry
-            key={emoji.id}
-            name={emoji.name}
-            img={emoji.emoji}
-            desc={emoji.meaning}
-        />
-    );
-}
-
 function App() {
   return (
     <div>
@@ -22,7 +10,10 @@ function App() {
       </h1>
 
       <dl className="dictionary">
-          {emojipedia.map(createDic)}
+          {/*good practice to have a set of parenthesis in returning a value*/}
+          {emojipedia.map(emoji => (
+              <Entry key={emoji.id} name={emoji.name} img={emoji.emoji} desc={emoji.meaning}/>
+          ))}
       </dl>
     </div>
   );
